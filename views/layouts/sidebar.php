@@ -7,12 +7,12 @@ echo Menu::widget([
         'ulId' => "accordionSidebar"
     ], //  optional
     'brand' => [
-        'url' => ['/'],
+        'url' => ['site/index'],
         'content' => <<<HTML
-            <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <div class="sidebar-brand-icon mt-4">
+            <i class="fas fa-home"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>        
+            <div class="sidebar-brand-text mx-3">Yii Advanced</div>        
 HTML
     ],
     'items' => [
@@ -30,22 +30,40 @@ HTML
             // 'label' => '', // if sidebar we will set this, if divider then no
 
         ],
+        // [
+        //     'label' => 'Data',
+        //     'icon' => 'fas fa-bars', // optional, default to "fa fa-circle-o
+        //     'visible' => true, // optional, default to true
+        //     // 'subMenuTitle' => 'Menu 2 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
+        //     'items' => [
+        //         [
+        //             'label' => 'Data User',
+        //             'icon' => 'fas fa-user', // optional, default to "fa fa-circle-o
+        //             'url' => ['personal/index'], //  Array format of Url to, will be not used if have an items
+        //         ],
+        //         // [
+        //         //     'label' => 'Menu 2 Sub 2',
+        //         //     'url' => ['/menu22'], //  Array format of Url to, will be not used if have an items
+        //         // ],
+        //     ]
+        // ],
         [
             'label' => 'Data User',
-            'icon' => 'fas fa-bars', // optional, default to "fa fa-circle-o
+            'url' => ['personal/index'], //  Array format of Url to, will be not used if have an items
+            'icon' => 'fas fa-user', // optional, default to "fa fa-circle-o
             'visible' => true, // optional, default to true
-            // 'subMenuTitle' => 'Menu 2 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
-            'items' => [
-                [
-                    'label' => 'Data User',
-                    'icon' => 'fas fa-user', // optional, default to "fa fa-circle-o
-                    'url' => ['personal/index'], //  Array format of Url to, will be not used if have an items
-                ],
-                // [
-                //     'label' => 'Menu 2 Sub 2',
-                //     'url' => ['/menu22'], //  Array format of Url to, will be not used if have an items
-                // ],
-            ]
+            // 'options' => [
+            //     'liClass' => 'nav-item',
+            // ] // optional
+        ],
+        [
+            'label' => 'Data Mobil',
+            'url' => ['car/index'], //  Array format of Url to, will be not used if have an items
+            'icon' => 'fas fa-car', // optional, default to "fa fa-circle-o
+            'visible' => true, // optional, default to true
+            // 'options' => [
+            //     'liClass' => 'nav-item',
+            // ] // optional
         ],
         
         // [
