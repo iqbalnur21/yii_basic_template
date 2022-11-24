@@ -42,7 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nama_panggilan',
                             'jenis_kelamin',
                             'tempat_lahir',
-                            'tanggal_lahir',
+                            [
+                                'label' => 'Tanggal Lahir',
+                                'value' => date('d M Y', strtotime($model->tanggal_lahir)),
+                            ],
                             'status_perkawinan',
                         ],
                     ]) ?>

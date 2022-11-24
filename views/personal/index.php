@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\PersonalSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'User';
+$this->title = 'Data User';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="personal-index">
@@ -34,11 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     'nama_lengkap',
                     'jenis_kelamin',
-                    'tempat_lahir',
-                    'tanggal_lahir',
-                    //'status_perkawinan',
+                    // 'tempat_lahir',
+                    // 'tanggal_lahir',
+                    'status_perkawinan',
                     'agama',
-                    //'pendidikan',
+                    'pendidikan',
                     //'alamat',
                     //'no_ktp',
                     //'no_hp',

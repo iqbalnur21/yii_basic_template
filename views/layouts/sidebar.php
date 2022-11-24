@@ -9,10 +9,10 @@ echo Menu::widget([
     'brand' => [
         'url' => ['site/index'],
         'content' => <<<HTML
-            <div class="sidebar-brand-icon mt-4">
+            <div class="sidebar-brand-icon mt-3">
             <i class="fas fa-home"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Yii Advanced</div>        
+            <div class="sidebar-brand-text mx-3">Yii Basic</div>        
 HTML
     ],
     'items' => [
@@ -57,9 +57,9 @@ HTML
             // ] // optional
         ],
         [
-            'label' => 'Data Mobil',
-            'url' => ['car/index'], //  Array format of Url to, will be not used if have an items
-            'icon' => 'fas fa-car', // optional, default to "fa fa-circle-o
+            'label' => 'Data Pegawai',
+            'url' => ['pegawai/index'], //  Array format of Url to, will be not used if have an items
+            'icon' => 'fas fa-users', // optional, default to "fa fa-circle-o
             'visible' => true, // optional, default to true
             // 'options' => [
             //     'liClass' => 'nav-item',

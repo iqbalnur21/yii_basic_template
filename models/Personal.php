@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "personal".
@@ -25,6 +26,9 @@ use Yii;
  */
 class Personal extends \yii\db\ActiveRecord
 {
+    const STATUS_PERKAWINAN = ['Menikah' => 'Menikah', 'Belum Menikah' => 'Belum Menikah', 'Cerai Mati' => 'Cerai Mati', 'Cerai Hidup' => 'Cerai Hidup'];
+    const PENDIDIKAN = ['DI' => 'DI', 'D2' => 'D2', 'D3' => 'D3', 'D4' => 'D4', 'S1' => 'S1', 'S2' => 'S2', 'S3' => 'S3'];
+    const AGAMA = ['Islam' => 'Islam', 'Kristen' => 'Kristen', 'Budha' => 'Budha', 'Hindu' => 'Hindu', 'Lain-lain' => 'Lain-lain'];
     /**
      * {@inheritdoc}
      */
@@ -75,5 +79,14 @@ class Personal extends \yii\db\ActiveRecord
     public function getPegawais()
     {
         return $this->hasMany(Pegawai::class, ['id_personal' => 'id_personal']);
+    }
+    public function getPegawai()
+    {
+        return $this->hasOne(Pegawai::class, ['id_personal' => 'id_personal']);
+    }
+    public static function getAllPersonal(){
+        $personal = Personal::find()->all();
+        $personal = ArrayHelper::map($personal, 'id_personal', 'nama_lengkap');
+        return $personal;
     }
 }

@@ -4,15 +4,17 @@ namespace app\controllers;
 
 use app\models\Personal;
 use app\models\PersonalSearch;
+use Symfony\Component\VarDumper\Cloner\Data;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * PersonalController implements the CRUD actions for Personal model.
  */
 class PersonalController extends Controller
-{
+{   
     /**
      * @inheritDoc
      */
@@ -68,9 +70,15 @@ class PersonalController extends Controller
     public function actionCreate()
     {
         $model = new Personal();
+        $statusPerkawinan = Personal::STATUS_PERKAWINAN;
+        $pendidikan = Personal::PENDIDIKAN;
+        $agama = Personal::AGAMA;
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->tanggal_lahir = \Yii::$app->formatter->asDate($model->tanggal_lahir, 'yyyy-MM-dd'); //formatter bawaan Yii2 Framework
+                $model->save();
+                Yii::$app->session->setFlash('success', 'Data User Berhasil di Tambah');
                 return $this->redirect(['view', 'id_personal' => $model->id_personal]);
             }
         } else {
@@ -79,6 +87,9 @@ class PersonalController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'statusPerkawinan' => $statusPerkawinan,
+            'agama' => $agama,
+            'pendidikan' => $pendidikan,
         ]);
     }
 
@@ -92,13 +103,23 @@ class PersonalController extends Controller
     public function actionUpdate($id_personal)
     {
         $model = $this->findModel($id_personal);
+        $model->tanggal_lahir = date('d M Y', strtotime($model->tanggal_lahir));//formatter date php
+        $statusPerkawinan = Personal::STATUS_PERKAWINAN;
+        $pendidikan = Personal::PENDIDIKAN;
+        $agama = Personal::AGAMA;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($model->load($this->request->post())) {
+            $model->tanggal_lahir = \Yii::$app->formatter->asDate($model->tanggal_lahir, 'yyyy-MM-dd'); //formatter date bawaan Yii2 Framework
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Data User Berhasil di Edit');
             return $this->redirect(['view', 'id_personal' => $model->id_personal]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'statusPerkawinan' => $statusPerkawinan,
+            'agama' => $agama,
+            'pendidikan' => $pendidikan,
         ]);
     }
 
@@ -113,6 +134,7 @@ class PersonalController extends Controller
     {
         $this->findModel($id_personal)->delete();
 
+        Yii::$app->session->setFlash('danger', 'Data User Berhasil di Hapus');
         return $this->redirect(['index']);
     }
 
