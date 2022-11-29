@@ -56,30 +56,46 @@ HTML
             //     'liClass' => 'nav-item',
             // ] // optional
         ],
+        // [
+        //     'label' => 'Data Pegawai',
+        //     'url' => ['pegawai/index'], //  Array format of Url to, will be not used if have an items
+        //     'icon' => 'fas fa-users', // optional, default to "fa fa-circle-o
+        //     'visible' => true, // optional, default to true
+        //     // 'options' => [
+        //     //     'liClass' => 'nav-item',
+        //     // ] // optional
+        // ],
+        
         [
-            'label' => 'Data Pegawai',
-            'url' => ['pegawai/index'], //  Array format of Url to, will be not used if have an items
+            'label' => 'Kepegawaian',
             'icon' => 'fas fa-users', // optional, default to "fa fa-circle-o
             'visible' => true, // optional, default to true
-            // 'options' => [
-            //     'liClass' => 'nav-item',
-            // ] // optional
+            // 'subMenuTitle' => 'Menu 3 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
+            'items' => [
+                [
+                    'label' => 'Data Pegawai',
+                    'icon' => 'fas fa-user', // optional, default to "fa fa-circle-o
+                    'url' => ['pegawai/index'], //  Array format of Url to, will be not used if have an items
+                ],
+            ]
         ],
-        
-        // [
-        //     'label' => 'Menu 3',
-        //     'visible' => true, // optional, default to true
-        //     // 'subMenuTitle' => 'Menu 3 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
-        //     'items' => [
-        //         [
-        //             'label' => 'Menu 3 Sub 1',
-        //             'url' => ['/menu21'], //  Array format of Url to, will be not used if have an items
-        //         ],
-        //         [
-        //             'label' => 'Menu 3 Sub 2',
-        //             'url' => ['/menu22'], //  Array format of Url to, will be not used if have an items
-        //         ],
-        //     ]
-        // ],
+        [
+            'label' => 'Laporan',
+            'icon' => 'fas fa-list', // optional, default to "fa fa-circle-o
+            'visible' => true, // optional, default to true
+            // 'subMenuTitle' => 'Menu 3 Item', // optional only when have submenutitle, if not exist will not have subMenuTitle
+            'items' => [
+                [
+                    'label' => 'Rekap Lembur',
+                    'icon' => 'fas fa-list', // optional, default to "fa fa-circle-o
+                    'url' => ['pegawai/index'], //  Array format of Url to, will be not used if have an items
+                ],
+                [
+                    'icon' => 'fas fa-list', // optional, default to "fa fa-circle-o
+                    'label' => 'Rekap Cuti',
+                    'url' => ['/menu22'], //  Array format of Url to, will be not used if have an items
+                ],
+            ]
+        ],
     ]
 ]);
